@@ -1,0 +1,30 @@
+# requirements.txt
+# Это файл где перечислены все библиотеки которые нужны проекту
+
+# Telegram Bot
+aiogram>=3.13.0             # Фреймворк для телеграм ботов (обновлено для Python 3.14)
+aiohttp==3.9.1              # Асинхронный HTTP клиент
+
+# Configuration
+python-dotenv==1.0.0        # для чтения .env файлов
+pydantic>=2.9.0             # Валидация данных v2 (обновлено для Python 3.14)
+pydantic-settings>=2.6.0    # Настройки через Pydantic
+
+# Database
+sqlalchemy==2.0.36        # ORM для работы с БД
+asyncpg>=0.30.0             # Асинхронный драйвер для PostgreSQL (обновлено для Python 3.14)
+aiosqlite==0.19.0           # для SQLite (опционально, для локальной разработки)
+
+# Cache & State
+redis==5.0.1                # Клиент для Redis
+
+# Logging
+structlog==23.3.0           # Структурированное логирование
+
+# API
+fastapi==0.109.0            # Веб-фреймворк для REST API
+uvicorn==0.27.0             # ASGI сервер
+
+# Database Migrations
+alembic==1.13.1             # Управление миграциями БД
+
