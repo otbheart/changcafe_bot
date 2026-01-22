@@ -29,7 +29,7 @@ Base = declarative_base()
 # ==========================================
 
 engine = create_async_engine(
-    config.database_url,  
+    config.async_database_url,
     echo=config.debug,    
     pool_size=20,         
     max_overflow=10,      
@@ -71,6 +71,7 @@ async def init_db():
     Создает все таблицы в БД.
     Запускается один раз при старте приложения.
     """
+    from infrastructure.database.models import Order
     
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
