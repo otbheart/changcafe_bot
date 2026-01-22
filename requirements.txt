@@ -3,7 +3,7 @@
 
 # Telegram Bot
 aiogram>=3.13.0             # Фреймворк для телеграм ботов (обновлено для Python 3.14)
-aiohttp==3.9.1              # Асинхронный HTTP клиент
+aiohttp==3.13.3              # Асинхронный HTTP клиент
 
 # Configuration
 python-dotenv==1.0.0        # для чтения .env файлов
