@@ -12,31 +12,36 @@ Redis запоминает в каком состоянии он находит�
 - И т.д.
 
 Без Redis состояния теряются при перезагрузке бота.
+
+Note: On Replit, Redis may not be available. In that case,
+we fall back to memory storage.
 """
 
-from redis.asyncio.client import Redis
-from aiogram.fsm.storage.redis import RedisStorage
+import os
+from aiogram.fsm.storage.memory import MemoryStorage
 
 from config.settings import config
 
 # ==========================================
-# ПОДКЛЮЧАЕМСЯ К REDIS
+# SETUP STORAGE (Redis if available, else Memory)
 # ==========================================
 
-# Создаём асинхронное соединение с Redis
-redis = Redis.from_url(
-    config.redis_url,  # Берём URL из .env (обычно redis://localhost:6379)
-    encoding="utf-8",
-    decode_responses=True
-)
+redis = None
+redis_storage = None
 
-# ==========================================
-# СОЗДАЁМ STORAGE ДЛЯ AIOGRAM
-# ==========================================
-
-# RedisStorage = хранилище состояний в Redis для aiogram FSM
-# FSM = Finite State Machine (конечный автомат)
-redis_storage = RedisStorage(redis=redis)
+try:
+    from redis.asyncio.client import Redis
+    from aiogram.fsm.storage.redis import RedisStorage
+    
+    redis = Redis.from_url(
+        config.redis_url,
+        encoding="utf-8",
+        decode_responses=True
+    )
+    redis_storage = RedisStorage(redis=redis)
+except Exception as e:
+    print(f"⚠️ Redis not available, using MemoryStorage: {e}")
+    redis_storage = MemoryStorage()
 
 # ==========================================
 # ФУНКЦИЯ: проверить соединение
@@ -54,6 +59,9 @@ async def check_redis_connection():
     except Exception as e:
         print(f"❌ Redis не работает: {e}")
     """
+    
+    if redis is None:
+        return False
     
     try:
         await redis.ping()

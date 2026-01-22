@@ -28,3 +28,14 @@ uvicorn==0.27.0             # ASGI сервер
 # Database Migrations
 alembic==1.13.1             # Управление миграциями БД
 
+aiogram
+aiohttp
+asyncpg
+fastapi
+pydantic
+pydantic-settings
+python-dotenv
+redis
+sqlalchemy
+structlog
+uvicorn
