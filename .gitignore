@@ -36,3 +36,5 @@ logs/             # Папка с логами
 # OS
 .DS_Store         # macOS
 
+.env.save
+.env
