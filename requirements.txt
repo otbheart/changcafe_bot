@@ -3,7 +3,7 @@
 
 # Telegram Bot
 aiogram>=3.13.0             # Фреймворк для телеграм ботов (обновлено для Python 3.14)
-aiohttp==3.9.1              # Асинхронный HTTP клиент
+aiohttp==3.13.3              # Асинхронный HTTP клиент (Security Update)
 
 # Configuration
 python-dotenv==1.0.0        # для чтения .env файлов
@@ -22,8 +22,9 @@ redis==5.0.1                # Клиент для Redis
 structlog==23.3.0           # Структурированное логирование
 
 # API
-fastapi==0.109.0            # Веб-фреймворк для REST API
+fastapi==0.128.0            # Веб-фреймворк для REST API (Security Update & Compatibility)
 uvicorn==0.27.0             # ASGI сервер
+starlette==0.50.0           # ASGI toolkit (Security Update & FastAPI Compatibility)
 
 # Database Migrations
 alembic==1.13.1             # Управление миграциями БД
@@ -39,3 +40,6 @@ redis
 sqlalchemy
 structlog
 uvicorn
+aiohttp==3.13.3
+fastapi==0.128.0
+starlette==0.50.0
